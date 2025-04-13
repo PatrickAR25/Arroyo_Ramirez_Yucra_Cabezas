@@ -47,33 +47,36 @@ public class RegistrarProducto extends AppCompatActivity {
                 String tipoevaluacion = buttTipoEvaluacion.getText().toString().trim();
                 String tipoentrega = buttTipoEntrega.getText().toString().trim();
 
+                if (asignatura.isEmpty() || fechahora.isEmpty() || tema.isEmpty() || detallesimportantes.isEmpty()
+                        || nombredocente.isEmpty() || correodocente.isEmpty()
+                        || tipoevaluacion.equals("Seleccione tipo de evaluacion")
+                        || tipoentrega.equals("Selecciona tipo de entrega")) {
 
-                if(asignatura.isEmpty() || fechahora.isEmpty() || tema.isEmpty() || detallesimportantes.isEmpty()
-                || nombredocente.isEmpty() || correodocente.isEmpty() || tipoevaluacion.equals("Seleccione tipo de evaluacion")
-                        || tipoentrega.equals("Selecciona tipo de entrega")){
-                    Toast.makeText(RegistrarProducto.this, "Campos vacios, porfavor ingrese los datos correspondientes!!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegistrarProducto.this, "Campos vacíos, por favor ingrese los datos correspondientes.", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(RegistrarProducto.this, "¡Producto académico registrado con éxito!", Toast.LENGTH_SHORT).show();
+
+                    editTextAsignatura.setText("");
+                    editFechaHora.setText("");
+                    editTextTema.setText("");
+                    editDetallesImportantes.setText("");
+                    editCorreoDocente.setText("");
+                    editNombreDocente.setText("");
+                    buttTipoEvaluacion.setText("Seleccione tipo de evaluacion");
+                    buttTipoEntrega.setText("Selecciona tipo de entrega");
+
+                    new AlertDialog.Builder(RegistrarProducto.this)
+                            .setTitle("¿Deseas registrar otro producto académico?")
+                            .setPositiveButton("Sí", (dialog, which) -> {
+                                // No hacer nada, usuario se queda en la misma pantalla
+                            })
+                            .setNegativeButton("No", (dialog, which) -> {
+                                Intent intent = new Intent(RegistrarProducto.this, MainActivity.class);
+                                startActivity(intent);
+                                finish();
+                            })
+                            .show();
                 }
-                Toast.makeText(RegistrarProducto.this, "¡Productos academicos registrados con éxito!", Toast.LENGTH_SHORT).show();
-
-                editTextAsignatura.setText("");
-                editFechaHora.setText("");
-                editTextTema.setText("");
-                editDetallesImportantes.setText("");
-                editCorreoDocente.setText("");
-                editNombreDocente.setText("");
-                buttTipoEvaluacion.setText("Seleccione tipo de evaluacion");
-                buttTipoEntrega.setText("Selecciona tipo de entrega");
-
-                new AlertDialog.Builder(RegistrarProducto.this)
-                        .setTitle("¿Deseas registrar otro producto académico?")
-                        .setPositiveButton("Sí", (dialog, which) -> {
-                        })
-                        .setNegativeButton("No", (dialog, which) -> {
-                            Intent intent = new Intent(RegistrarProducto.this, MainActivity.class);
-                            startActivity(intent);
-                            finish();
-                        })
-                        .show();
             }
         });
 
@@ -90,7 +93,7 @@ public class RegistrarProducto extends AppCompatActivity {
 
         Button btnTipoEvaluacion = findViewById(R.id.buttTipoEvaluacion);
         btnTipoEvaluacion.setOnClickListener(v -> {
-            String[] opciones = {"PA1", "PA2", "PA3", "PA4"};
+            String[] opciones = {"PA1", "Examen Parcial", "PA2", "Examen Final"};
             new AlertDialog.Builder(this)
                     .setTitle("Selecciona el tipo de evaluación")
                     .setItems(opciones, (dialog, which) -> {
