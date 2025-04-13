@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/minimalista9" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/degradado"
+        android:alpha="0.8" />
+
+    <Button
+        android:id="@+id/buttSalirLista"
+        android:layout_width="255dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:layout_marginBottom="25dp"
+        android:text="@string/btnBuscarSalirLista"
+        android:textSize="18sp"
+        android:fontFamily="@font/texto3"  />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="35dp"
+        android:elevation="30dp"
+        android:orientation="vertical"
+        android:padding="12dp"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="150dp"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:text="@string/textListaProductosAcademicos"
+            android:textColor="#FFFFFF"
+            android:textSize="25sp"
+            android:minHeight="48dp"
+            android:fontFamily="@font/texto1"
+            android:inputType="text"
+            />
+
+        <TextView
+            android:id="@+id/textoDatos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:text="Esperando datos..."
+            android:textSize="18sp"
+            android:padding="16dp" />
+
+
+    </LinearLayout>
+
+
+</FrameLayout>
